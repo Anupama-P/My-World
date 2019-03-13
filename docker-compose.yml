@@ -1,0 +1,57 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+  postgres_backup: {}
+  esdata1:
+    driver: local
+  django-logs:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db_dump:/tmp
+    env_file: .env
+    ports:
+      - 5432:5432
+
+  django:
+    build: ./django
+    volumes:
+      - ./django:/app
+      - django-logs:/logs
+    user: django
+    depends_on:
+      - postgres
+    env_file: .env
+    ports:
+      - "5000:5000"
+      - "8000:8000"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.1
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch1:9200
+    ports:
+      - 5601:5601

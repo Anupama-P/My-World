@@ -1,0 +1,61 @@
+# Wheel 0.25+ needed to install certain packages on CPython 3.5+
+# like Pillow and psycopg2
+# See http://bitly.com/wheel-building-fails-CPython-35
+# Verified bug on Python 3.5.1
+wheel==0.29.0
+
+# Django LTS
+django==1.11.2
+
+gunicorn==19.6.0
+
+# Configuration
+django-environ==0.4.1
+
+# Serving staticfiles
+whitenoise==3.3.0
+
+# Models
+django-model-utils==2.6.1
+
+# Images
+Pillow==3.0.0
+
+# Python-PostgreSQL Database Adapter
+psycopg2==2.7
+
+# Time zones support
+pytz==2017.2
+
+# django-restframework
+djangorestframework==3.6.3
+django-cors-headers==2.1.0
+Markdown==2.6.8
+django-filter==1.0.4
+
+# Token based authentication with expiry
+djangorestframework-expiring-authtoken
+
+# Elasticsearch
+elasticsearch==6.3.1
+
+django-extensions==1.7.9
+
+Faker==0.7.12
+django-fake-model==0.1.4
+
+# Profiling
+django-silk==1.0.0
+
+# server DRF (Precision CMS) EndPoint
+requests==2.18.4
+
+# requests don't fully support urllib3 >= 1.23 yet
+urllib3==1.22
+
+openpyxl==2.5.2
+
+
+# Force Lock
+certifi==2018.8.24
+python-dateutil== 2.7.3
