@@ -5,7 +5,7 @@
 wheel==0.29.0
 
 # Django LTS
-django==1.11.2
+django==1.11.19
 
 gunicorn==19.6.0
 
@@ -28,7 +28,7 @@ psycopg2==2.7
 pytz==2017.2
 
 # django-restframework
-djangorestframework==3.6.3
+djangorestframework==3.9.1
 django-cors-headers==2.1.0
 Markdown==2.6.8
 django-filter==1.0.4
@@ -47,14 +47,9 @@ django-fake-model==0.1.4
 # Profiling
 django-silk==1.0.0
 
-# server DRF (Precision CMS) EndPoint
-requests==2.18.4
-
-# requests don't fully support urllib3 >= 1.23 yet
-urllib3==1.22
+urllib3==1.24.2
 
 openpyxl==2.5.2
-
 
 # Force Lock
 certifi==2018.8.24
