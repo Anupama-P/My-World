@@ -19,7 +19,7 @@ whitenoise==3.3.0
 django-model-utils==2.6.1
 
 # Images
-Pillow==3.3.2
+Pillow==8.2.0
 
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7
